@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>window.$ = window.jQuery = require('jquery');</script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+        <script src="checkSDR.js" type="text/javascript"></script>
+        <script src="node_modules/js-xlsx/dist/cpexcel.js"></script>
+        <script src="node_modules/js-xlsx/dist/xlsx.core.min.js"></script>
+        <script src="node_modules/file-saverjs/FileSaver.js"></script>
+        <script src="node_modules/tableexport/dist/js/tableexport.js"></script>
+        <title>Jiggle</title>
+    </head>
+    <body>
+        <div class="container-fluid" id="main">
+            <div class="row text-center">
+                <div class="col-4"><h4>Logo</h4></div>
+                <div class="col-4"><h4>Hyperlink</h4></div>
+                <div class="col-4"><h4>Logo</h4></div>
+            </div>
+            <table class="table table-bordered order-list" id="sdr-table">
+                <thead class="thead-dark text-center">
+                    <tr>
+                        <th class="text-center" scope="col">Scope</th>
+                        <th class="text-center" scope="col">Use Case</th>
+                        <th class="text-center" scope="col">Location</th>
+                        <th class="text-center" scope="col">EC</th>
+                        <th class="text-center" scope="col">EA</th>
+                        <th class="text-center" scope="col">EL</th>
+                        <th class="text-center" scope="col">Comments</th>
+                        <th class="text-center" scope="col" style="min-width: 190px;">Modify</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" placeholder = "Scope" class="form-control text-center"></td>
+                        <td><input type="text" placeholder = "Use Case" class="form-control text-center"></td>
+                        <td><input type="text" placeholder = "Location" class="form-control text-center"></td>
+                        <td><input type="text" placeholder = "EC" class="form-control text-center"></td>
+                        <td><input type="text" placeholder = "EA" class="form-control text-center"></td>
+                        <td><input type="text" placeholder = "EL" class="form-control text-center"></td>
+                        <td><input type="text" placeholder = "Comment" class="form-control text-left"></td>
+                        <td><input type="button" class="addrow btn btn-md btn-primary" value="Add Row"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="hiddentable"></div>
+            <Button onclick="checkSDR()">Check SDR</Button>
+            <button onclick="exportToExcel()">Export Table Data To Excel File</button>
+        </div>
+        <script>
+            require("./addRow.js");
+
+            var sdr = document.getElementById("sdr-table");
+            document.getElementById("hiddentable").appendChild(sdr);
+            function exportToExcel(){
+                $("#hiddentable td").each(function(){
+                    $(this).html($(this).children()[0].value);
+                });
+                $("#sdr-table").tableExport();
+            };
+
+            console.log(process);
+        </script>
+    </body>
+</html>
