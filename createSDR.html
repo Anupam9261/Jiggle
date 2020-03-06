@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="css/stylesheet.css">
+        <link rel="stylesheet" href="utils/css/bootstrap.min.css">
+        <script src="utils/js/jQuery.js"></script>
+        <script src="utils/js/bootstrap.min.js"></script>
+        <title>Jiggle</title>
+    </head>
+    <body>
+        <div class="container-fluid" id="main">
+            <div class="row text-center">
+                <div class="col-4"><h4>Logo</h4></div>
+                <div class="col-4"><h4>Hyperlink</h4></div>
+                <div class="col-4"><h4>Logo</h4></div>
+            </div>
+            <table class="table table-bordered table-hover order-list" id="sdr-table">
+                <thead class="thead-dark text-center">
+                    <tr>
+                        <th class="text-center" scope="col">Scope</th>
+                        <th class="text-center" scope="col">Use Case</th>
+                        <th class="text-center" scope="col">Location</th>
+                        <th class="text-center" scope="col">EC</th>
+                        <th class="text-center" scope="col">EA</th>
+                        <th class="text-center" scope="col">EL</th>
+                        <th class="text-center" scope="col">Comments</th>
+                        <th class="text-center modify" scope="col" style="min-width: 190px;">Modify</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" placeholder = "Scope" class="form-control text-center"></td>
+                        <td><input type="text" placeholder = "Use Case" class="form-control text-center"></td>
+                        <td><input type="text" placeholder = "Location" class="form-control text-center"></td>
+                        <td><input type="text" placeholder = "EC" class="form-control text-center"></td>
+                        <td><input type="text" placeholder = "EA" class="form-control text-center"></td>
+                        <td><input type="text" placeholder = "EL" class="form-control text-center"></td>
+                        <td><input type="text" placeholder = "Comment" class="form-control text-left"></td>
+                        <td><input type="button" class="addrow btn btn-md btn-primary" value="Add Row"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <Button id="myBtn" class="btn btn-block btn-dark">Preview SDR</Button>
+        
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span id="close">&times;</span>
+                    <div id="sdr-preview"></div>
+                    <Button id="downloadSDR" class="btn btn-success">Download</Button>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function(){
+                $.getScript("js/modify.js");
+                $.getScript("js/preview.js");
+                $.getScript("js/download.js");
+            });
+        </script>
+    </body>
+</html>
